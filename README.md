@@ -22,6 +22,9 @@ our plaintext changelog and version history.
 
 # Version History/Changelog
 
+### 0.0.5:
+    - Added ability to add and remove patients from doctor's patient list
+
 ### 0.0.4:
     - Code formatting normalized across all files.
     - Prescription class added.
