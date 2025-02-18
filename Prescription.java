@@ -27,6 +27,7 @@ public class Prescription {
         this.expiryDate = defaultExpiry.getTime();
     }
 
+    // the getters
     public int getId() {
         return id;
     }
@@ -47,6 +48,7 @@ public class Prescription {
         return expiryDate;
     }
 
+    // the setters
     public void setId(int id) {
         this.id = id;
     }
@@ -67,6 +69,7 @@ public class Prescription {
         this.expiryDate = expiryDate;
     }
 
+    // converting everything into a toString format
     public String toString() {
         return "Id: " + id + ", Doctor: " + doctor + ", Patient: " + patient + ", Medication: " + medication + ", Expiry Date: " + expiryDate;
     }
