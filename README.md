@@ -22,9 +22,12 @@ our plaintext changelog and version history.
 
 # Version History/Changelog
 
+### 0.0.3:
+    - Medication class added.
+
 ### 0.0.2:
-    - Person class added
-    - Doctor class added
+    - Person class added.
+    - Doctor class added.
 
 ### 0.0.1:
     - Initial release.
