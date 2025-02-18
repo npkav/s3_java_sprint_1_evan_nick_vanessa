@@ -19,6 +19,7 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
+    // the getters
     public int getId() {
         return id;
     }
@@ -35,6 +36,7 @@ public class Person {
         return phoneNumber;
     }
 
+    // the setters
     public void setId() {
         this.id = id;
     }
