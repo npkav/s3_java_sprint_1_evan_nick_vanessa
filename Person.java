@@ -37,22 +37,23 @@ public class Person {
     }
 
     // the setters
-    public void setId() {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public void setName() {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setAge() {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public void setPhone() {
+    public void setPhone(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
+    // converting everything into a toString format
     public String toString() {
         return "ID: " + id + ", Name: " + name + ", Age: " + age + ", Phone Number: " + phoneNumber;
     }
