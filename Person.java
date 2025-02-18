@@ -20,41 +20,22 @@ public class Person {
     }
 
     // the getters
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getPhone() {
-        return phoneNumber;
-    }
+    public int getId() {return id;}
+    public String getName() {return name;}
+    public int getAge() {return age;}
+    public String getPhone() {return phoneNumber;}
 
     // the setters
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setPhone(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+    public void setId(int id) {this.id = id;}
+    public void setName(String name) {this.name = name;}
+    public void setAge(int age) {this.age = age;}
+    public void setPhone(String phoneNumber) {this.phoneNumber = phoneNumber;}
 
     // converting everything into a toString format
     public String toString() {
-        return "ID: " + id + ", Name: " + name + ", Age: " + age + ", Phone Number: " + phoneNumber;
+        return "ID: " + id +
+               ", Name: " + name +
+               ", Age: " + age +
+               ", Phone Number: " + phoneNumber;
     }
 }

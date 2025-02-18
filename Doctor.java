@@ -19,34 +19,15 @@ public class Doctor {
     }
 
     // getters
-    public int getDoctorId() {
-        return id;
-    }
-
-    public String getDoctorName() {
-        return name;
-    }
-
-    public String getDoctorSpecialization() {
-        return specialization;
-    }
-
-    public Patient[] getDoctorPatients() {
-        return patients.toArray(new Patient[patients.size()]);
-    }
+    public int getDoctorId() {return id;}
+    public String getDoctorName() {return name;}
+    public String getDoctorSpecialization() {return specialization;}
+    public Patient[] getDoctorPatients() {return patients.toArray(new Patient[patients.size()]);}
 
     // setters
-    public void setDoctorId(int id) {
-        this.id = id;
-    }
-
-    public void setDoctorName(String name) {
-        this.name = name;
-    }
-
-    public void setDoctorSpecialization(String specialization) {
-        this.specialization = specialization;
-    }
+    public void setDoctorId(int id) {this.id = id;}
+    public void setDoctorName(String name) {this.name = name;}
+    public void setDoctorSpecialization(String specialization) {this.specialization = specialization;}
 
     public void setDoctorPatients(Patient[] patients) {
         this.patients = new ArrayList<Patient>();
@@ -57,6 +38,8 @@ public class Doctor {
 
     // toString method
     public String toString() {
-        return "Doctor ID: " + id + "\nDoctor Name: " + name + "\nSpecialization: " + specialization;
+        return "Doctor ID: " + id +
+               "\nDoctor Name: " + name +
+               "\nSpecialization: " + specialization;
     }
 }

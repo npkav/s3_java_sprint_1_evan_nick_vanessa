@@ -36,16 +36,16 @@ public class Medication {
     public void setName(String name) {this.name = name;}
     public void setDose(String dose) {this.dose = dose;}
     public void setInStock(int inStock) {this.inStock = inStock;}
-    public void setExpiry(Date expiryDate) {this.expiryDate = expiryDate;}
+    public void setExpiryDate(Date expiryDate) {this.expiryDate = expiryDate;}
 
-    // toString
+    // toString method
     public String toString() {
         return "Medication{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", dose='" + dose + '\'' +
-                ", inStock=" + inStock +
-                ", expiryDate=" + expiryDate +
+                ", Name='" + name + '\'' +
+                ", Dose='" + dose + '\'' +
+                ", Quantity in Stock=" + inStock +
+                ", Expiry Date=" + expiryDate +
                 '}';
     }
 }

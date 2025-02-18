@@ -28,49 +28,25 @@ public class Prescription {
     }
 
     // the getters
-    public int getId() {
-        return id;
-    }
-
-    public String getDoctor() {
-        return doctor;
-    }
-
-    public String getPatient() {
-        return patient;
-    }
-
-    public String getMedication() {
-        return medication;
-    }
-
-    public Date getExpiryDate() {
-        return expiryDate;
-    }
+    public int getId() {return id;}
+    public String getDoctor() {return doctor;}
+    public String getPatient() {return patient;}
+    public String getMedication() {return medication;}
+    public Date getExpiryDate() {return expiryDate;}
 
     // the setters
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setDoctor(String doctor) {
-        this.doctor = doctor;
-    }
-
-    public void setPatient(String patient) {
-        this.patient = patient;
-    }
-
-    public void setMedication(String medication) {
-        this.medication = medication;
-    }
-
-    public void setExpiryDate(Date expiryDate) {
-        this.expiryDate = expiryDate;
-    }
+    public void setId(int id) {this.id = id;}
+    public void setDoctor(String doctor) {this.doctor = doctor;}
+    public void setPatient(String patient) {this.patient = patient;}
+    public void setMedication(String medication) {this.medication = medication;}
+    public void setExpiry(Date expiryDate) {this.expiryDate = expiryDate;}
 
     // converting everything into a toString format
     public String toString() {
-        return "Id: " + id + ", Doctor: " + doctor + ", Patient: " + patient + ", Medication: " + medication + ", Expiry Date: " + expiryDate;
+        return "Medication ID: " + id +
+               ", Doctor: " + doctor +
+               ", Patient: " + patient +
+               ", Medication: " + medication +
+               ", Expiry Date: " + expiryDate;
     }
 }
