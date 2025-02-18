@@ -5,7 +5,6 @@
 // · Medication: A reference to the prescribed medication.
 // · Prescription Expiry: The expiration date of the prescription, which defaults to one year from the date it was issued.
 
-
 public class Prescription {
-    
+
 }
