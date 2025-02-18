@@ -22,6 +22,11 @@ our plaintext changelog and version history.
 
 # Version History/Changelog
 
+### 0.0.4:
+    - Code formatting normalized across all files.
+    - Prescription class added.
+    - Patient class added.
+
 ### 0.0.3:
     - Medication class added.
 
