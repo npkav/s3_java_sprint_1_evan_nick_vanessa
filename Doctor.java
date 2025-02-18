@@ -37,19 +37,15 @@ public class Doctor {
     }
 
     // add a patient to the doctor's list of patients
-    public void addDoctorPatient(Patient patient) {
-        patients.add(patient);
-    }
+    public void addDoctorPatient(Patient patient) {patients.add(patient);}
 
     // remove a patient from the doctor's list of patients
-    public void removeDoctorPatient(Patient patient) {
-        patients.remove(patient);
-    }
+    public void removeDoctorPatient(Patient patient) {patients.remove(patient);}
 
     // toString method
     public String toString() {
         return "Doctor ID: " + id +
-               "\nDoctor Name: " + name +
-               "\nSpecialization: " + specialization;
+               ", Doctor Name: " + name +
+               ", Specialization: " + specialization;
     }
 }
