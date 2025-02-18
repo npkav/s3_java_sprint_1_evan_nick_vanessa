@@ -1,18 +1,21 @@
 // Doctor represents a doctor. Each doctor has a specialization and a list of
 // patients they are managing.
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Doctor {
     private int id;
     private String name;
     private String specialization;
-    private Patient[] patients;
+    private List<Patient> patients;
 
     // default constructor
     public Doctor(int id, String name, String specialization) {
         this.id = id;
         this.name = name;
         this.specialization = specialization;
-        this.patients = new Patient[0];
+        this.patients = new ArrayList<Patient>();
     }
 
     // getters
@@ -29,7 +32,7 @@ public class Doctor {
     }
 
     public Patient[] getDoctorPatients() {
-        return patients;
+        return patients.toArray(new Patient[patients.size()]);
     }
 
     // setters
@@ -46,7 +49,10 @@ public class Doctor {
     }
 
     public void setDoctorPatients(Patient[] patients) {
-        this.patients = patients;
+        this.patients = new ArrayList<Patient>();
+        for (Patient patient : patients) {
+            this.patients.add(patient);
+        }
     }
 
     // toString method
