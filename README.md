@@ -14,7 +14,7 @@ our plaintext changelog and version history.
 
 --------------------------------
 
-## How to Use
+# How to Use
 
 
 
