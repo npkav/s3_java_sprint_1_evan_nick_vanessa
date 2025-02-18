@@ -63,22 +63,22 @@ public class Patient {
     }
 
     // add a medication to the patient's list of medications
-    public void addMedication(Medication medication) {
+    public void addPatientMedication(Medication medication) {
         medications.add(medication);
     }
 
     // add a prescription to the patient's list of prescriptions
-    public void addPrescription(Prescription prescription) {
+    public void addPatientPrescription(Prescription prescription) {
         prescriptions.add(prescription);
     }
 
     // remove a medication from the patient's list of medications
-    public void removeMedication(Medication medication) {
+    public void removePatientMedication(Medication medication) {
         medications.remove(medication);
     }
 
     // remove a prescription from the patient's list of prescriptions
-    public void removePrescription(Prescription prescription) {
+    public void removePatientPrescription(Prescription prescription) {
         prescriptions.remove(prescription);
     }
 
