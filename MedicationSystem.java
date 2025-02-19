@@ -10,12 +10,14 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class MedicationSystem {
     private List<Patient> patients;
     private List<Medication> medications;
     private List<Doctor> doctors;
     private MenuSystem menus;
+    private Scanner scanner;
 
     public MedicationSystem() {
         this.patients = new ArrayList<>();
@@ -102,9 +104,26 @@ public class MedicationSystem {
     }
 
     private void addDoctor() {
+        System.out.println("Enter Doctor ID:");
+        int id = scanner.nextInt();
+        scanner.nextLine(); 
+        System.out.println("Enter Doctor Name:");
+        String name = scanner.nextLine();
+        System.out.println("Enter Doctor Specialization:");
+        String specialization = scanner.nextLine();
+
+        Doctor newDoctor = new Doctor(id, name, specialization);
+        doctors.add(newDoctor);
+        System.out.println("Doctor added successfully.");
     }
 
     private void removeDoctor() {
+        System.out.println("Enter Doctor ID to remove:");
+        int idToRemove = scanner.nextInt();
+        scanner.nextLine(); 
+
+        doctors.removeIf(doctor -> doctor.getId() == idToRemove);
+        System.out.println("Doctor removed successfully.");
     }
 
 
@@ -122,9 +141,26 @@ public class MedicationSystem {
     }
 
     private void addPatient() {
+        System.out.println("Enter Patient ID:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter Patient Name:");
+        String name = scanner.nextLine();
+        System.out.println("Enter Patient DOB:");
+        String dob = scanner.nextLine();
+
+        Patient newPatient = new Patient(id, name, dob);
+        patients.add(newPatient);
+        System.out.println("Patient added successfully.");
     }
 
     private void removePatient() {
+        System.out.println("Enter Patient ID to remove:");
+        int idToRemove = scanner.nextInt();
+        scanner.nextLine();
+
+        patients.removeIf(patient -> patient.getId() == idToRemove);
+        System.out.println("Patient removed successfully.");
     }
 
 
