@@ -100,6 +100,12 @@ public class MedicationSystem {
             case 2:
                 removeDoctor();
                 break;
+            case 3:
+                addPatientToDoctor();
+                break;
+            case 4:
+                removePatientFromDoctor();
+                break;
         }
     }
 
@@ -124,6 +130,70 @@ public class MedicationSystem {
 
         doctors.removeIf(doctor -> doctor.getId() == idToRemove);
         System.out.println("Doctor removed successfully.");
+    }
+
+    private void addPatientToDoctor() {
+        System.out.println("Enter Doctor ID:");
+        int doctorId = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter Patient ID:");
+        int patientId = scanner.nextInt();
+        scanner.nextLine();
+
+        Doctor doctor = doctors.stream()
+            .filter(d -> d.getId() == doctorId)
+            .findFirst()
+            .orElse(null);
+
+        if (doctor == null) {
+            System.out.println("Doctor not found.");
+            return;
+        }
+
+        Patient patient = patients.stream()
+            .filter(p -> p.getId() == patientId)
+            .findFirst()
+            .orElse(null);
+
+        if (patient == null) {
+            System.out.println("Patient not found.");
+            return;
+        }
+
+        doctor.addPatient(patient);
+        System.out.println("Patient added to doctor successfully.");
+    }
+
+    private void removePatientFromDoctor() {
+        System.out.println("Enter Doctor ID:");
+        int doctorId = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter Patient ID:");
+        int patientId = scanner.nextInt();
+        scanner.nextLine();
+
+        Doctor doctor = doctors.stream()
+            .filter(d -> d.getId() == doctorId)
+            .findFirst()
+            .orElse(null);
+
+        if (doctor == null) {
+            System.out.println("Doctor not found.");
+            return;
+        }
+
+        Patient patient = patients.stream()
+            .filter(p -> p.getId() == patientId)
+            .findFirst()
+            .orElse(null);
+
+        if (patient == null) {
+            System.out.println("Patient not found.");
+            return;
+        }
+
+        doctor.removePatient(patient);
+        System.out.println("Patient removed from doctor successfully.");
     }
 
 
