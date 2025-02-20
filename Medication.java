@@ -16,17 +16,19 @@ public class Medication {
     private int inStock;
     private Date expiryDate;
 
+    private static Date calcExpiryDate() { // moved expiry date calculation to its own method
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.YEAR, 1);
+        return cal.getTime();
+    }
+
     // constructor
-    public Medication(int id, String name, String dose, int inStock) { // was noticing an issue with (int, string, string, int, date), so i just removed expiryDate from this
+    public Medication(int id, String name, String dose, int inStock) {
         this.id = id;
         this.name = name;
         this.dose = dose;
         this.inStock = inStock;
-
-        // takes today's date, adds 1 to the year
-        Calendar defaultExpiry = Calendar.getInstance();
-        defaultExpiry.add(Calendar.YEAR, 1);
-        this.expiryDate = defaultExpiry.getTime();
+        this.expiryDate = calcExpiryDate();
     }
 
     // getters
