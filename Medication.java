@@ -6,6 +6,7 @@
 // · ExpiryDate: The expiry date of the medication ( try and set the date to be a random date inclusive of the past)
 
 import java.util.Date;
+import java.util.Calendar;
 
 // default constructor
 public class Medication {
@@ -16,12 +17,16 @@ public class Medication {
     private Date expiryDate;
 
     // constructor
-    public Medication(int id, String name, String dose, int inStock, Date expiryDate) {
+    public Medication(int id, String name, String dose, int inStock) { // was noticing an issue with (int, string, string, int, date), so i just removed expiryDate from this
         this.id = id;
         this.name = name;
         this.dose = dose;
         this.inStock = inStock;
-        this.expiryDate = expiryDate;
+
+        // takes today's date, adds 1 to the year
+        Calendar defaultExpiry = Calendar.getInstance();
+        defaultExpiry.add(Calendar.YEAR, 1);
+        this.expiryDate = defaultExpiry.getTime();
     }
 
     // getters
