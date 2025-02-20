@@ -11,11 +11,13 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Date;
 
 public class MedicationSystem {
     private List<Patient> patients;
     private List<Medication> medications;
     private List<Doctor> doctors;
+    // private List<Perscription> perscriptions; should probably go here for the printPerscription command
     private MenuSystem menus;
     private Scanner scanner;
 
@@ -24,6 +26,7 @@ public class MedicationSystem {
         this.medications = new ArrayList<>();
         this.doctors = new ArrayList<>();
         this.menus = new MenuSystem();
+        this.scanner = new Scanner(System.in);
     }
 
 // MAIN MENU
@@ -88,7 +91,6 @@ public class MedicationSystem {
 
     private void searchDoctors() {
     }
-
 
 // MODIFY DOCTOR MENU
     private void modifyDoctor() {
@@ -196,7 +198,6 @@ public class MedicationSystem {
         System.out.println("Patient removed from doctor successfully.");
     }
 
-
 // MODIFY PATIENT MENU
     private void modifyPatient() {
         int choice = menus.showModifyMenu("Patient");
@@ -233,7 +234,6 @@ public class MedicationSystem {
         System.out.println("Patient removed successfully.");
     }
 
-
 // MODIFY MEDICATION MENU
     private void modifyMedication() {
         int choice = menus.showModifyMenu("Medication");
@@ -248,26 +248,62 @@ public class MedicationSystem {
     }
 
     private void addMedication() {
+        System.out.println("Please enter medication ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Please enter medication name: ");
+        String name = scanner.nextLine();
+
+        System.out.println("Please enter medication dose: ");
+        String dose = scanner.nextLine();
+
+        System.out.println("Please enter medication quantity: ");
+        int inStock = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Getting expiry date...");
+
+        Medication medication = new Medication(id, name, dose, inStock);
+
+        medications.add(medication);
+        System.out.println(name + " added to list! Expiry Date: " + medication.getExpiryDate());
     }
 
     private void removeMedication() {
-    }
+        System.out.println("Please enter the ID you wish to remove: ");
+        int idToRemove = scanner.nextInt();
+        scanner.nextLine();
 
+        medications.removeIf(medication -> medication.getId() == idToRemove);
+        System.out.println("Medication removed!");
+    }
 
 // PRINT PRESCRIPTIONS
-    private void printPrescriptions() {
+    private void printPrescriptions() { // bit lost on what to do here
+        
     }
-
 
 // RESTOCK MEDICATIONS
     private void restockMedications() {
+        System.out.println("Restocking medications!");
+        for (Medication medication : medications) {
+            int restock = 50;
+            medication.setInStock(medication.getInStock() + restock);
+            System.out.println(medication.getName() + " successfully restocked! Current amount: " + medication.getInStock());
+        }
     }
-
 
 // CHECK EXPIRED MEDICATIONS
     private void checkExpiredMedications() {
-    }
+        Date currentDate = new Date();
 
+        for (Medication medication : medications) {
+            if (medication.getExpiryDate().before(currentDate)) {
+                System.out.println("Uh oh! " + medication.getName() + " has expired! Expiry Date: " + medication.getExpiryDate());
+            }
+        }
+    }
 
 // GENERATE REPORT
     private void generateReport() {
