@@ -90,15 +90,19 @@ public class MedicationSystem {
     private void searchDrugs() {
         System.out.println("Enter drug name or ID and press enter (leave blank to see all drugs in the system): ");
         String search = scanner.nextLine().toLowerCase();
-
+        
+        boolean found = false;
         for (Medication medication : medications) {
             if (search.isEmpty() || 
-                medication.getName().toLowerCase().contains(search)) {
+                medication.getName().toLowerCase().contains(search) ||
+                String.valueOf(medication.getId()).equals(search)) {
                 System.out.println(medication);
+                found = true;
             }
-            else {
-                System.out.println("ERROR: Drug not found.");
-            }
+        }
+        
+        if (!found && !search.isEmpty()) {
+            System.out.println("ERROR: Drug not found.");
         }
     }
 
@@ -106,16 +110,20 @@ public class MedicationSystem {
 // SEARCH PATIENTS
     private void searchPatients() {
         System.out.println("Enter patient name or ID and press enter (leave blank to see all patients in the system): ");
-        String searchTerm = scanner.nextLine();
-
+        String search = scanner.nextLine().toLowerCase();
+        
+        boolean found = false;
         for (Patient patient : patients) {
-            if (searchTerm.isEmpty() ||
-                patient.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
+            if (search.isEmpty() || 
+                patient.getName().toLowerCase().contains(search) ||
+                String.valueOf(patient.getId()).equals(search)) {
                 System.out.println(patient);
+                found = true;
             }
-            else {
-                System.out.println("ERROR: Patient not found.");
-            }
+        }
+        
+        if (!found && !search.isEmpty()) {
+            System.out.println("ERROR: Patient not found.");
         }
     }
 
@@ -123,16 +131,20 @@ public class MedicationSystem {
 // SEARCH DOCTORS
     private void searchDoctors() {
         System.out.println("Enter doctor name or ID and press enter (leave blank to see all doctors in the system): ");
-        String searchTerm = scanner.nextLine();
-
+        String search = scanner.nextLine().toLowerCase();
+        
+        boolean found = false;
         for (Doctor doctor : doctors) {
-            if (searchTerm.isEmpty() ||
-                doctor.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
+            if (search.isEmpty() || 
+                doctor.getName().toLowerCase().contains(search) ||
+                String.valueOf(doctor.getId()).equals(search)) {
                 System.out.println(doctor);
+                found = true;
             }
-            else {
-                System.out.println("ERROR: Doctor not found.");
-            }
+        }
+        
+        if (!found && !search.isEmpty()) {
+            System.out.println("ERROR: Doctor not found.");
         }
     }
 

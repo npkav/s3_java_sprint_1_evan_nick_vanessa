@@ -16,9 +16,11 @@ public class Medication {
     private int inStock;
     private Date expiryDate;
 
-    private static Date calcExpiryDate() { // moved expiry date calculation to its own method
+    // calculate random expiry date between 4 months ago and 8 months from now
+    private static Date calcExpiryDate() {
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, 1);
+        int randomMonths = (int)(Math.random() * 12) - 4;
+        cal.add(Calendar.MONTH, randomMonths);
         return cal.getTime();
     }
 
