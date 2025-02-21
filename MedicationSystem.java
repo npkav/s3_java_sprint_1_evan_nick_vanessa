@@ -151,7 +151,7 @@ public class MedicationSystem {
 
 // MODIFY DOCTOR MENU
     private void modifyDoctor() {
-        int choice = menus.showModifyMenu("Doctor");
+        int choice = menus.showDoctorMenu();
         switch (choice) {
             case 1:
                 addDoctor();
@@ -306,7 +306,7 @@ private void addDoctor() {
 
 // MODIFY PATIENT MENU
     private void modifyPatient() {
-        int choice = menus.showModifyMenu("Patient");
+        int choice = menus.showPatientMenu();
         switch (choice) {
             case 1:
                 addPatient();
@@ -387,7 +387,7 @@ private void addPatient() {
 
 // MODIFY MEDICATION MENU
     private void modifyMedication() {
-        int choice = menus.showModifyMenu("Medication");
+        int choice = menus.showMedicationMenu();
         switch (choice) {
             case 1:
                 addMedication();

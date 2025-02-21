@@ -43,12 +43,43 @@ public class MenuSystem {
         return scanner.nextInt();
     }
 
-    public int showModifyMenu(String menuType) {
-        System.out.println("Modify " + menuType);
-        System.out.println("1. Add " + menuType);
-        System.out.println("2. Remove " + menuType);
-        System.out.println("3. Edit " + menuType);
+    public int showDoctorMenu() {
+        System.out.println("Doctor Menu");
+        System.out.println("1. Add Doctor");
+        System.out.println("2. Remove Doctor");
+        System.out.println("3. Edit Doctor");
+        System.out.println("4. Add Patient to Doctor");
+        System.out.println("5. Remove Patient from Doctor");
 
+        System.out.print("Please enter your choice: ");
+        return scanner.nextInt();
+    }
+
+    public int showAddRemovePatientMenu() {
+        System.out.println("Add/Remove Patient from Doctor");
+        System.out.println("1. Add Patient to Doctor");
+        System.out.println("2. Remove Patient from Doctor");
+
+        System.out.print("Please enter your choice: ");
+        return scanner.nextInt();
+    }
+    
+    public int showPatientMenu() {
+        System.out.println("Patient Menu");
+        System.out.println("1. Add Patient");
+        System.out.println("2. Remove Patient");
+        System.out.println("3. Edit Patient");
+        
+        System.out.print("Please enter your choice: ");
+        return scanner.nextInt();
+    }
+
+    public int showMedicationMenu() {
+        System.out.println("Medication Menu");
+        System.out.println("1. Add Medication");
+        System.out.println("2. Remove Medication");
+        System.out.println("3. Edit Medication");
+        
         System.out.print("Please enter your choice: ");
         return scanner.nextInt();
     }
