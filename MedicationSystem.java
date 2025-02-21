@@ -428,7 +428,38 @@ public class MedicationSystem {
 
 // EDIT MEDICATION
     private void editMedication() {
+        System.out.println("Enter Medication ID to edit:");
+        int idToEdit = scanner.nextInt();
+        scanner.nextLine();
 
+        Medication medicationToEdit = medications.stream()
+            .filter(m -> m.getId() == idToEdit)
+            .findFirst()
+            .orElse(null);
+
+        if (medicationToEdit == null) {
+            System.out.println("Medication not found.");
+            return;
+        }
+
+        System.out.println("Current Medication Information:");
+        System.out.println(medicationToEdit);
+        
+        System.out.println("\nEnter new Medication Name (or press enter to keep current):");
+        String newName = scanner.nextLine();
+        if (!newName.isEmpty()) {
+            medicationToEdit.setName(newName);
+        }
+
+        System.out.println("Enter new Medication Dose (or press enter to keep current):");
+        String newDose = scanner.nextLine();
+        if (!newDose.isEmpty()) {
+            medicationToEdit.setDose(newDose);
+        }
+
+        System.out.println("Medication information updated successfully.");
+        System.out.println("Updated Information:");
+        System.out.println(medicationToEdit);
     }
 
 
