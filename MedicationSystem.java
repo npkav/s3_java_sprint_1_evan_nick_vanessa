@@ -17,7 +17,7 @@ public class MedicationSystem {
     private List<Patient> patients;
     private List<Medication> medications;
     private List<Doctor> doctors;
-    // private List<Perscription> perscriptions; should probably go here for the printPerscription command
+    private List<Prescription> prescriptions;
     private MenuSystem menus;
     private Scanner scanner;
 
@@ -371,8 +371,27 @@ public class MedicationSystem {
 
 
 // PRINT PRESCRIPTIONS
-    private void printPrescriptions() { // bit lost on what to do here
+    private void printPrescriptions() {
+        System.out.println("Please enter medication ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
 
+        System.out.println("Please enter doctor name: ");
+        String doctor = scanner.nextLine();
+
+        System.out.println("Please enter patient name: ");
+        String patient = scanner.nextLine();
+
+        System.out.println("Please enter medication name: ");
+        String medication = scanner.nextLine();
+
+        System.out.println("Getting expiry date...");
+
+        Prescription prescription = new Prescription(id, doctor, patient, medication);
+
+        prescriptions.add(prescription);
+        System.out.println("Prescription successfully created!");
+        System.out.println("Id: " + id + ", Doctor Name: " + doctor + ", Patient Name: " + patient + ", Medication Name: " + medication + ", Expiry Date: " + prescription.getExpiryDate());
     }
 
 
