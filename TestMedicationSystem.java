@@ -68,19 +68,19 @@ public class TestMedicationSystem {
 
 
         // ASSIGN PATIENTS TO DOCTORS TEST
-        system.addPatientToDoctor(1, 1);
-        system.addPatientToDoctor(2, 2);
-        system.addPatientToDoctor(3, 3);
-        system.addPatientToDoctor(4, 4);
-        system.addPatientToDoctor(5, 5);
-        system.addPatientToDoctor(1, 6);
-        system.addPatientToDoctor(2,7);
-        system.addPatientToDoctor(3, 8);
-        system.addPatientToDoctor(4, 9);
-        system.addPatientToDoctor(5, 10);
-        system.addPatientToDoctor(1, 11);
-        system.addPatientToDoctor(2, 12);
-        system.addPatientToDoctor(3, 13);
+        system.addTestPatientToDoctor(1, 1);
+        system.addTestPatientToDoctor(2, 2);
+        system.addTestPatientToDoctor(3, 3);
+        system.addTestPatientToDoctor(4, 4);
+        system.addTestPatientToDoctor(5, 5);
+        system.addTestPatientToDoctor(1, 6);
+        system.addTestPatientToDoctor(2,7);
+        system.addTestPatientToDoctor(3, 8);
+        system.addTestPatientToDoctor(4, 9);
+        system.addTestPatientToDoctor(5, 10);
+        system.addTestPatientToDoctor(1, 11);
+        system.addTestPatientToDoctor(2, 12);
+        system.addTestPatientToDoctor(3, 13);
 
 
         // START TEST

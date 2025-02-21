@@ -9,9 +9,9 @@
 // · Restock the drugs in the pharmacy in some capacity. You can just add a random number to the stock, you can add a specific number. Its up to you!
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Date;
 
 public class MedicationSystem {
     private List<Patient> patients;
@@ -119,6 +119,7 @@ public class MedicationSystem {
         }
     }
 
+
 // SEARCH DOCTORS
     private void searchDoctors() {
         System.out.println("Enter doctor name or ID and press enter (leave blank to see all doctors in the system): ");
@@ -135,7 +136,7 @@ public class MedicationSystem {
         }
     }
 
-    
+
 // MODIFY DOCTOR MENU
     private void modifyDoctor() {
         int choice = menus.showModifyMenu("Doctor");
@@ -147,9 +148,12 @@ public class MedicationSystem {
                 removeDoctor();
                 break;
             case 3:
-                addPatientToDoctor();
+                editDoctor();
                 break;
             case 4:
+                addPatientToDoctor();
+                break;
+            case 5:
                 removePatientFromDoctor();
                 break;
         }
@@ -180,6 +184,12 @@ public class MedicationSystem {
 
         doctors.removeIf(doctor -> doctor.getId() == idToRemove);
         System.out.println("Doctor removed successfully.");
+    }
+
+
+// EDIT DOCTOR
+    private void editDoctor() {
+
     }
 
 
@@ -261,6 +271,9 @@ public class MedicationSystem {
             case 2:
                 removePatient();
                 break;
+            case 3:
+                editPatient();
+                break;
         }   
     }
 
@@ -292,6 +305,12 @@ public class MedicationSystem {
     }
 
 
+// EDIT PATIENT
+    private void editPatient() {
+
+    }
+
+
 // MODIFY MEDICATION MENU
     private void modifyMedication() {
         int choice = menus.showModifyMenu("Medication");
@@ -301,6 +320,9 @@ public class MedicationSystem {
                 break;
             case 2:
                 removeMedication();
+                break;
+            case 3:
+                editMedication();
                 break;
         }
     }
@@ -342,8 +364,14 @@ public class MedicationSystem {
     }
 
 
+// EDIT MEDICATION
+    private void editMedication() {
+
+    }
+
+
 // PRINT PRESCRIPTIONS
-    private void printPrescriptions() { // bit lost on what to do here
+    private void printPrescriptions() {
         System.out.println("Please enter medication ID: ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -371,7 +399,7 @@ public class MedicationSystem {
     private void restockMedications() {
         System.out.println("Restocking medications!");
         for (Medication medication : medications) {
-            int restock = 50;
+            int restock = 500;
             medication.setInStock(medication.getInStock() + restock);
             System.out.println(medication.getName() + " successfully restocked! Current amount: " + medication.getInStock());
         }
@@ -392,18 +420,33 @@ public class MedicationSystem {
 
 // GENERATE REPORT
     private void generateReport() {
+        System.out.println("Doctors:");
+        for (Doctor doctor : doctors) {
+            System.out.println(doctor.toString());
+        }
+
+        System.out.println("Patients:");
+        for (Patient patient : patients) {
+            System.out.println(patient.toString());
+        }
+
+        System.out.println("Medications:");
+        for (Medication medication : medications) {
+            System.out.println(medication.toString());
+        }
     }
 
     public List<Doctor> getDoctors() {
-        return doctors;
+        return this.doctors;
     }
 
     public List<Patient> getPatients() {
-        return patients;
+        return this.patients;
     }
 
     public List<Medication> getMedications() {
-        return medications;
+
+        return this.medications;
     }
 
     public void addDoctor(Doctor doctor) {
@@ -418,7 +461,11 @@ public class MedicationSystem {
         medications.add(medication);
     }
 
-    public void addPatientToDoctor(int doctorId, int patientId) {
+
+
+
+    // TEST METHOD -- REMOVE LATER
+    public void addTestPatientToDoctor(int doctorId, int patientId) {
         Doctor doctor = doctors.stream()
             .filter(d -> d.getId() == doctorId)
             .findFirst()
