@@ -89,16 +89,11 @@ public class MedicationSystem {
 // SEARCH DRUGS
     private void searchDrugs() {
         System.out.println("Enter drug name or ID and press enter (leave blank to see all drugs in the system): ");
-        String searchTerm = scanner.nextLine();
+        String search = scanner.nextLine().toLowerCase();
 
         for (Medication medication : medications) {
-            if (medication.getName().contains(searchTerm)) {
-                System.out.println(medication);
-            }
-            if (medication.getId() == Integer.parseInt(searchTerm)) {
-                System.out.println(medication);
-            }
-            if (searchTerm.isEmpty()) {
+            if (search.isEmpty() || 
+                medication.getName().toLowerCase().contains(search)) {
                 System.out.println(medication);
             }
             else {
@@ -114,21 +109,15 @@ public class MedicationSystem {
         String searchTerm = scanner.nextLine();
 
         for (Patient patient : patients) {
-            if (patient.getName().contains(searchTerm)) {
-                System.out.println(patient);
-            }
-            if (patient.getId() == Integer.parseInt(searchTerm)) {
-                System.out.println(patient);
-            }
-            if (searchTerm.isEmpty()) {
+            if (searchTerm.isEmpty() ||
+                patient.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
                 System.out.println(patient);
             }
             else {
-                System.out.println("ERROR: Patient not found.");   
+                System.out.println("ERROR: Patient not found.");
             }
         }
     }
-
 
 // SEARCH DOCTORS
     private void searchDoctors() {
@@ -136,13 +125,8 @@ public class MedicationSystem {
         String searchTerm = scanner.nextLine();
 
         for (Doctor doctor : doctors) {
-            if (doctor.getName().contains(searchTerm)) {
-                System.out.println(doctor);
-            }
-            if (doctor.getId() == Integer.parseInt(searchTerm)) {
-                System.out.println(doctor);
-            }
-            if (searchTerm.isEmpty()) {
+            if (searchTerm.isEmpty() ||
+                doctor.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
                 System.out.println(doctor);
             }
             else {
@@ -389,5 +373,45 @@ public class MedicationSystem {
 
 // GENERATE REPORT
     private void generateReport() {
+    }
+
+    public List<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public List<Patient> getPatients() {
+        return patients;
+    }
+
+    public List<Medication> getMedications() {
+        return medications;
+    }
+
+    public void addDoctor(Doctor doctor) {
+        doctors.add(doctor);
+    }
+
+    public void addPatient(Patient patient) {
+        patients.add(patient);
+    }
+
+    public void addMedication(Medication medication) {
+        medications.add(medication);
+    }
+
+    public void addPatientToDoctor(int doctorId, int patientId) {
+        Doctor doctor = doctors.stream()
+            .filter(d -> d.getId() == doctorId)
+            .findFirst()
+            .orElse(null);
+
+        Patient patient = patients.stream()
+            .filter(p -> p.getId() == patientId)
+            .findFirst()
+            .orElse(null);
+
+        if (doctor != null && patient != null) {
+            doctor.addPatient(patient);
+        }
     }
 }
