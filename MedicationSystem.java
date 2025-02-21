@@ -119,6 +119,7 @@ public class MedicationSystem {
         }
     }
 
+
 // SEARCH DOCTORS
     private void searchDoctors() {
         System.out.println("Enter doctor name or ID and press enter (leave blank to see all doctors in the system): ");
@@ -135,7 +136,7 @@ public class MedicationSystem {
         }
     }
 
-    
+
 // MODIFY DOCTOR MENU
     private void modifyDoctor() {
         int choice = menus.showModifyMenu("Doctor");
@@ -147,9 +148,12 @@ public class MedicationSystem {
                 removeDoctor();
                 break;
             case 3:
-                addPatientToDoctor();
+                editDoctor();
                 break;
             case 4:
+                addPatientToDoctor();
+                break;
+            case 5:
                 removePatientFromDoctor();
                 break;
         }
@@ -180,6 +184,12 @@ public class MedicationSystem {
 
         doctors.removeIf(doctor -> doctor.getId() == idToRemove);
         System.out.println("Doctor removed successfully.");
+    }
+
+
+// EDIT DOCTOR
+    private void editDoctor() {
+
     }
 
 
@@ -261,6 +271,9 @@ public class MedicationSystem {
             case 2:
                 removePatient();
                 break;
+            case 3:
+                editPatient();
+                break;
         }   
     }
 
@@ -292,6 +305,12 @@ public class MedicationSystem {
     }
 
 
+// EDIT PATIENT
+    private void editPatient() {
+
+    }
+
+
 // MODIFY MEDICATION MENU
     private void modifyMedication() {
         int choice = menus.showModifyMenu("Medication");
@@ -301,6 +320,9 @@ public class MedicationSystem {
                 break;
             case 2:
                 removeMedication();
+                break;
+            case 3:
+                editMedication();
                 break;
         }
     }
@@ -342,9 +364,15 @@ public class MedicationSystem {
     }
 
 
+// EDIT MEDICATION
+    private void editMedication() {
+
+    }
+
+
 // PRINT PRESCRIPTIONS
     private void printPrescriptions() { // bit lost on what to do here
-        
+
     }
 
 
@@ -352,7 +380,7 @@ public class MedicationSystem {
     private void restockMedications() {
         System.out.println("Restocking medications!");
         for (Medication medication : medications) {
-            int restock = 50;
+            int restock = 500;
             medication.setInStock(medication.getInStock() + restock);
             System.out.println(medication.getName() + " successfully restocked! Current amount: " + medication.getInStock());
         }
