@@ -89,16 +89,11 @@ public class MedicationSystem {
 // SEARCH DRUGS
     private void searchDrugs() {
         System.out.println("Enter drug name or ID and press enter (leave blank to see all drugs in the system): ");
-        String searchTerm = scanner.nextLine();
+        String search = scanner.nextLine().toLowerCase();
 
         for (Medication medication : medications) {
-            if (medication.getName().contains(searchTerm)) {
-                System.out.println(medication);
-            }
-            if (medication.getId() == Integer.parseInt(searchTerm)) {
-                System.out.println(medication);
-            }
-            if (searchTerm.isEmpty()) {
+            if (search.isEmpty() || 
+                medication.getName().toLowerCase().contains(search)) {
                 System.out.println(medication);
             }
             else {
@@ -114,17 +109,12 @@ public class MedicationSystem {
         String searchTerm = scanner.nextLine();
 
         for (Patient patient : patients) {
-            if (patient.getName().contains(searchTerm)) {
-                System.out.println(patient);
-            }
-            if (patient.getId() == Integer.parseInt(searchTerm)) {
-                System.out.println(patient);
-            }
-            if (searchTerm.isEmpty()) {
+            if (searchTerm.isEmpty() ||
+                patient.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
                 System.out.println(patient);
             }
             else {
-                System.out.println("ERROR: Patient not found.");   
+                System.out.println("ERROR: Patient not found.");
             }
         }
     }
@@ -136,13 +126,8 @@ public class MedicationSystem {
         String searchTerm = scanner.nextLine();
 
         for (Doctor doctor : doctors) {
-            if (doctor.getName().contains(searchTerm)) {
-                System.out.println(doctor);
-            }
-            if (doctor.getId() == Integer.parseInt(searchTerm)) {
-                System.out.println(doctor);
-            }
-            if (searchTerm.isEmpty()) {
+            if (searchTerm.isEmpty() ||
+                doctor.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
                 System.out.println(doctor);
             }
             else {
@@ -151,7 +136,7 @@ public class MedicationSystem {
         }
     }
 
-    
+
 // MODIFY DOCTOR MENU
     private void modifyDoctor() {
         int choice = menus.showModifyMenu("Doctor");
@@ -163,9 +148,12 @@ public class MedicationSystem {
                 removeDoctor();
                 break;
             case 3:
-                addPatientToDoctor();
+                editDoctor();
                 break;
             case 4:
+                addPatientToDoctor();
+                break;
+            case 5:
                 removePatientFromDoctor();
                 break;
         }
@@ -196,6 +184,12 @@ public class MedicationSystem {
 
         doctors.removeIf(doctor -> doctor.getId() == idToRemove);
         System.out.println("Doctor removed successfully.");
+    }
+
+
+// EDIT DOCTOR
+    private void editDoctor() {
+
     }
 
 
@@ -277,6 +271,9 @@ public class MedicationSystem {
             case 2:
                 removePatient();
                 break;
+            case 3:
+                editPatient();
+                break;
         }   
     }
 
@@ -308,6 +305,12 @@ public class MedicationSystem {
     }
 
 
+// EDIT PATIENT
+    private void editPatient() {
+
+    }
+
+
 // MODIFY MEDICATION MENU
     private void modifyMedication() {
         int choice = menus.showModifyMenu("Medication");
@@ -317,6 +320,9 @@ public class MedicationSystem {
                 break;
             case 2:
                 removeMedication();
+                break;
+            case 3:
+                editMedication();
                 break;
         }
     }
@@ -358,9 +364,15 @@ public class MedicationSystem {
     }
 
 
+// EDIT MEDICATION
+    private void editMedication() {
+
+    }
+
+
 // PRINT PRESCRIPTIONS
     private void printPrescriptions() { // bit lost on what to do here
-        
+
     }
 
 
@@ -368,7 +380,7 @@ public class MedicationSystem {
     private void restockMedications() {
         System.out.println("Restocking medications!");
         for (Medication medication : medications) {
-            int restock = 50;
+            int restock = 500;
             medication.setInStock(medication.getInStock() + restock);
             System.out.println(medication.getName() + " successfully restocked! Current amount: " + medication.getInStock());
         }
@@ -389,5 +401,49 @@ public class MedicationSystem {
 
 // GENERATE REPORT
     private void generateReport() {
+    }
+
+    public List<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public List<Patient> getPatients() {
+        return patients;
+    }
+
+    public List<Medication> getMedications() {
+        return medications;
+    }
+
+    public void addDoctor(Doctor doctor) {
+        doctors.add(doctor);
+    }
+
+    public void addPatient(Patient patient) {
+        patients.add(patient);
+    }
+
+    public void addMedication(Medication medication) {
+        medications.add(medication);
+    }
+
+
+
+
+    // TEST METHOD -- REMOVE LATER
+    public void addTestPatientToDoctor(int doctorId, int patientId) {
+        Doctor doctor = doctors.stream()
+            .filter(d -> d.getId() == doctorId)
+            .findFirst()
+            .orElse(null);
+
+        Patient patient = patients.stream()
+            .filter(p -> p.getId() == patientId)
+            .findFirst()
+            .orElse(null);
+
+        if (doctor != null && patient != null) {
+            doctor.addPatient(patient);
+        }
     }
 }

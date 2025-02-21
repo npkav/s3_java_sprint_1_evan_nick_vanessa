@@ -47,6 +47,7 @@ public class MenuSystem {
         System.out.println("Add/Remove " + menuType);
         System.out.println("1. Add " + menuType);
         System.out.println("2. Remove " + menuType);
+        System.out.println("3. Edit " + menuType);
 
         System.out.print("Please enter your choice: ");
         return scanner.nextInt();
