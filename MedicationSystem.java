@@ -9,6 +9,7 @@
 // · Restock the drugs in the pharmacy in some capacity. You can just add a random number to the stock, you can add a specific number. Its up to you!
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,6 +17,7 @@ public class MedicationSystem {
     private List<Patient> patients;
     private List<Medication> medications;
     private List<Doctor> doctors;
+    private List<Prescription> prescriptions;
     private MenuSystem menus;
     private Scanner scanner;
 
@@ -24,7 +26,9 @@ public class MedicationSystem {
         this.medications = new ArrayList<>();
         this.doctors = new ArrayList<>();
         this.menus = new MenuSystem();
+        this.scanner = new Scanner(System.in);
     }
+
 
 // MAIN MENU
     public void start() {
@@ -64,6 +68,7 @@ public class MedicationSystem {
         }
     }
 
+
 // SEARCH MENU
     private void search() {
         int choice = menus.showSearchMenu();
@@ -80,13 +85,55 @@ public class MedicationSystem {
         }
     }
 
+
+// SEARCH DRUGS
     private void searchDrugs() {
+        System.out.println("Enter drug name or ID and press enter (leave blank to see all drugs in the system): ");
+        String search = scanner.nextLine().toLowerCase();
+
+        for (Medication medication : medications) {
+            if (search.isEmpty() || 
+                medication.getName().toLowerCase().contains(search)) {
+                System.out.println(medication);
+            }
+            else {
+                System.out.println("ERROR: Drug not found.");
+            }
+        }
     }
 
+
+// SEARCH PATIENTS
     private void searchPatients() {
+        System.out.println("Enter patient name or ID and press enter (leave blank to see all patients in the system): ");
+        String searchTerm = scanner.nextLine();
+
+        for (Patient patient : patients) {
+            if (searchTerm.isEmpty() ||
+                patient.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
+                System.out.println(patient);
+            }
+            else {
+                System.out.println("ERROR: Patient not found.");
+            }
+        }
     }
 
+
+// SEARCH DOCTORS
     private void searchDoctors() {
+        System.out.println("Enter doctor name or ID and press enter (leave blank to see all doctors in the system): ");
+        String searchTerm = scanner.nextLine();
+
+        for (Doctor doctor : doctors) {
+            if (searchTerm.isEmpty() ||
+                doctor.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
+                System.out.println(doctor);
+            }
+            else {
+                System.out.println("ERROR: Doctor not found.");
+            }
+        }
     }
 
 
@@ -101,14 +148,19 @@ public class MedicationSystem {
                 removeDoctor();
                 break;
             case 3:
-                addPatientToDoctor();
+                editDoctor();
                 break;
             case 4:
+                addPatientToDoctor();
+                break;
+            case 5:
                 removePatientFromDoctor();
                 break;
         }
     }
 
+
+// ADD DOCTOR
     private void addDoctor() {
         System.out.println("Enter Doctor ID:");
         int id = scanner.nextInt();
@@ -123,6 +175,8 @@ public class MedicationSystem {
         System.out.println("Doctor added successfully.");
     }
 
+
+// REMOVE DOCTOR
     private void removeDoctor() {
         System.out.println("Enter Doctor ID to remove:");
         int idToRemove = scanner.nextInt();
@@ -132,6 +186,14 @@ public class MedicationSystem {
         System.out.println("Doctor removed successfully.");
     }
 
+
+// EDIT DOCTOR
+    private void editDoctor() {
+
+    }
+
+
+// ADD PATIENT TO DOCTOR
     private void addPatientToDoctor() {
         System.out.println("Enter Doctor ID:");
         int doctorId = scanner.nextInt();
@@ -164,6 +226,8 @@ public class MedicationSystem {
         System.out.println("Patient added to doctor successfully.");
     }
 
+
+// REMOVE PATIENT FROM DOCTOR
     private void removePatientFromDoctor() {
         System.out.println("Enter Doctor ID:");
         int doctorId = scanner.nextInt();
@@ -207,9 +271,14 @@ public class MedicationSystem {
             case 2:
                 removePatient();
                 break;
+            case 3:
+                editPatient();
+                break;
         }   
     }
 
+
+// ADD PATIENT
     private void addPatient() {
         System.out.println("Enter Patient ID:");
         int id = scanner.nextInt();
@@ -224,6 +293,8 @@ public class MedicationSystem {
         System.out.println("Patient added successfully.");
     }
 
+
+// REMOVE PATIENT
     private void removePatient() {
         System.out.println("Enter Patient ID to remove:");
         int idToRemove = scanner.nextInt();
@@ -231,6 +302,12 @@ public class MedicationSystem {
 
         patients.removeIf(patient -> patient.getId() == idToRemove);
         System.out.println("Patient removed successfully.");
+    }
+
+
+// EDIT PATIENT
+    private void editPatient() {
+
     }
 
 
@@ -244,32 +321,163 @@ public class MedicationSystem {
             case 2:
                 removeMedication();
                 break;
+            case 3:
+                editMedication();
+                break;
         }
     }
 
+
+// ADD MEDICATION
     private void addMedication() {
+        System.out.println("Please enter medication ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Please enter medication name: ");
+        String name = scanner.nextLine();
+
+        System.out.println("Please enter medication dose: ");
+        String dose = scanner.nextLine();
+
+        System.out.println("Please enter medication quantity: ");
+        int inStock = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Getting expiry date...");
+
+        Medication medication = new Medication(id, name, dose, inStock);
+
+        medications.add(medication);
+        System.out.println(name + " added to list! Expiry Date: " + medication.getExpiryDate());
     }
 
+
+// REMOVE MEDICATION
     private void removeMedication() {
+        System.out.println("Please enter the ID you wish to remove: ");
+        int idToRemove = scanner.nextInt();
+        scanner.nextLine();
+
+        medications.removeIf(medication -> medication.getId() == idToRemove);
+        System.out.println("Medication removed!");
+    }
+
+
+// EDIT MEDICATION
+    private void editMedication() {
+
     }
 
 
 // PRINT PRESCRIPTIONS
     private void printPrescriptions() {
+        System.out.println("Please enter medication ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Please enter doctor name: ");
+        String doctor = scanner.nextLine();
+
+        System.out.println("Please enter patient name: ");
+        String patient = scanner.nextLine();
+
+        System.out.println("Please enter medication name: ");
+        String medication = scanner.nextLine();
+
+        System.out.println("Getting expiry date...");
+
+        Prescription prescription = new Prescription(id, doctor, patient, medication);
+
+        prescriptions.add(prescription);
+        System.out.println("Prescription successfully created!");
+        System.out.println("Id: " + id + ", Doctor Name: " + doctor + ", Patient Name: " + patient + ", Medication Name: " + medication + ", Expiry Date: " + prescription.getExpiryDate());
     }
 
 
 // RESTOCK MEDICATIONS
     private void restockMedications() {
+        System.out.println("Restocking medications!");
+        for (Medication medication : medications) {
+            int restock = 500;
+            medication.setInStock(medication.getInStock() + restock);
+            System.out.println(medication.getName() + " successfully restocked! Current amount: " + medication.getInStock());
+        }
     }
 
 
 // CHECK EXPIRED MEDICATIONS
     private void checkExpiredMedications() {
+        Date currentDate = new Date();
+
+        for (Medication medication : medications) {
+            if (medication.getExpiryDate().before(currentDate)) {
+                System.out.println("Uh oh! " + medication.getName() + " has expired! Expiry Date: " + medication.getExpiryDate());
+            }
+        }
     }
 
 
 // GENERATE REPORT
     private void generateReport() {
+        System.out.println("Doctors:");
+        for (Doctor doctor : doctors) {
+            System.out.println(doctor.toString());
+        }
+
+        System.out.println("Patients:");
+        for (Patient patient : patients) {
+            System.out.println(patient.toString());
+        }
+
+        System.out.println("Medications:");
+        for (Medication medication : medications) {
+            System.out.println(medication.toString());
+        }
+    }
+
+    public List<Doctor> getDoctors() {
+        return this.doctors;
+    }
+
+    public List<Patient> getPatients() {
+        return this.patients;
+    }
+
+    public List<Medication> getMedications() {
+
+        return this.medications;
+    }
+
+    public void addDoctor(Doctor doctor) {
+        doctors.add(doctor);
+    }
+
+    public void addPatient(Patient patient) {
+        patients.add(patient);
+    }
+
+    public void addMedication(Medication medication) {
+        medications.add(medication);
+    }
+
+
+
+
+    // TEST METHOD -- REMOVE LATER
+    public void addTestPatientToDoctor(int doctorId, int patientId) {
+        Doctor doctor = doctors.stream()
+            .filter(d -> d.getId() == doctorId)
+            .findFirst()
+            .orElse(null);
+
+        Patient patient = patients.stream()
+            .filter(p -> p.getId() == patientId)
+            .findFirst()
+            .orElse(null);
+
+        if (doctor != null && patient != null) {
+            doctor.addPatient(patient);
+        }
     }
 }
