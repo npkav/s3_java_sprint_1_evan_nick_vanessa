@@ -399,7 +399,11 @@ public class MedicationSystem {
         medications.add(medication);
     }
 
-    public void addPatientToDoctor(int doctorId, int patientId) {
+
+
+
+    // TEST METHOD -- REMOVE LATER
+    public void addTestPatientToDoctor(int doctorId, int patientId) {
         Doctor doctor = doctors.stream()
             .filter(d -> d.getId() == doctorId)
             .findFirst()
