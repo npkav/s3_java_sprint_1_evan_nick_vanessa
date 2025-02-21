@@ -9,9 +9,9 @@
 // · Restock the drugs in the pharmacy in some capacity. You can just add a random number to the stock, you can add a specific number. Its up to you!
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Date;
 
 public class MedicationSystem {
     private List<Patient> patients;
@@ -401,18 +401,33 @@ public class MedicationSystem {
 
 // GENERATE REPORT
     private void generateReport() {
+        System.out.println("Doctors:");
+        for (Doctor doctor : doctors) {
+            System.out.println(doctor.toString());
+        }
+
+        System.out.println("Patients:");
+        for (Patient patient : patients) {
+            System.out.println(patient.toString());
+        }
+
+        System.out.println("Medications:");
+        for (Medication medication : medications) {
+            System.out.println(medication.toString());
+        }
     }
 
     public List<Doctor> getDoctors() {
-        return doctors;
+        return this.doctors;
     }
 
     public List<Patient> getPatients() {
-        return patients;
+        return this.patients;
     }
 
     public List<Medication> getMedications() {
-        return medications;
+
+        return this.medications;
     }
 
     public void addDoctor(Doctor doctor) {
