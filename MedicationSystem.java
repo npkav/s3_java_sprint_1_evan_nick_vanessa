@@ -25,6 +25,7 @@ public class MedicationSystem {
         this.patients = new ArrayList<>();
         this.medications = new ArrayList<>();
         this.doctors = new ArrayList<>();
+        this.prescriptions = new ArrayList<>();
         this.menus = new MenuSystem();
         this.scanner = new Scanner(System.in);
     }
@@ -477,26 +478,80 @@ private void addPatient() {
 
 // PRINT PRESCRIPTIONS
     private void printPrescriptions() {
-        System.out.println("Please enter medication ID: ");
+        System.out.println("Please enter prescription ID: ");
         int id = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Please enter doctor name: ");
-        String doctor = scanner.nextLine();
+        System.out.println("Please enter one of the following doctor IDs: ");
+        for (Doctor doctor : doctors) {
+            System.out.println(doctor.getId() + ": " + doctor.getName());
+        }
 
-        System.out.println("Please enter patient name: ");
-        String patient = scanner.nextLine();
+        int doctorId = scanner.nextInt();
+        scanner.nextLine();
 
-        System.out.println("Please enter medication name: ");
-        String medication = scanner.nextLine();
+        Doctor selectDoctor = null;
+        for (Doctor doctor : doctors) {
+            if (doctor.getId() == doctorId) {
+                selectDoctor = doctor;
+                break;
+            }
+        }
+    
+        if (selectDoctor == null) {
+            System.out.println("ERROR! Doctor not found.");
+            return;
+        }
+
+        System.out.println("Please enter one of the following patient IDs: ");
+        for (Patient patient : patients) {
+            System.out.println(patient.getId() + ": " + patient.getName());
+        }
+
+        int patientId = scanner.nextInt();
+        scanner.nextLine();
+
+        Patient selectPatient = null;
+        for (Patient patient : patients) {
+            if (patient.getId() == patientId) {
+                selectPatient = patient;
+                break;
+            }
+        }
+    
+        if (selectPatient == null) {
+            System.out.println("ERROR! Patient not found.");
+            return;
+        }
+
+        System.out.println("Please enter one of the following medication IDs: ");
+        for (Medication medication : medications) {
+            System.out.println(medication.getId() + ": " + medication.getName());
+        }
+
+        int medicationId = scanner.nextInt();
+        scanner.nextLine();
+
+        Medication selectMedication = null;
+        for (Medication medication : medications) {
+            if (medication.getId() == medicationId) {
+                selectMedication = medication;
+                break;
+            }
+        }
+    
+        if (selectMedication == null) {
+            System.out.println("ERROR! Medication not found.");
+            return;
+        }
 
         System.out.println("Getting expiry date...");
 
-        Prescription prescription = new Prescription(id, doctor, patient, medication);
+        Prescription prescription = new Prescription(id, selectDoctor, selectPatient, selectMedication);
 
         prescriptions.add(prescription);
         System.out.println("Prescription successfully created!");
-        System.out.println("Id: " + id + ", Doctor Name: " + doctor + ", Patient Name: " + patient + ", Medication Name: " + medication + ", Expiry Date: " + prescription.getExpiryDate());
+        System.out.println("Id: " + id + ", Doctor Name: " + selectDoctor.getName() + ", Patient Name: " + selectPatient.getName()  + ", Medication Name: " + selectMedication.getName()  + ", Expiry Date: " + prescription.getExpiryDate());
     }
 
 
