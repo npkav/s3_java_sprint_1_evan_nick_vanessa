@@ -20,9 +20,9 @@ public class MenuSystem {
     public int showMainMenu() {
         System.out.println("Medication System");
         System.out.println("1. Search for Drugs, Patients, and Doctors");
-        System.out.println("2. Add/Remove Doctor");
-        System.out.println("3. Add/Remove Patient");
-        System.out.println("4. Add/Remove Medication");
+        System.out.println("2. Modify Doctor");
+        System.out.println("3. Modify Patient");
+        System.out.println("4. Modify Medication");
         System.out.println("5. Print All Prescriptions by a Specific Doctor");
         System.out.println("6. Restock Medications");
         System.out.println("7. Check for Expired Medications");
@@ -44,7 +44,7 @@ public class MenuSystem {
     }
 
     public int showModifyMenu(String menuType) {
-        System.out.println("Add/Remove " + menuType);
+        System.out.println("Modify " + menuType);
         System.out.println("1. Add " + menuType);
         System.out.println("2. Remove " + menuType);
         System.out.println("3. Edit " + menuType);
