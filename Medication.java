@@ -20,6 +20,12 @@ public class Medication {
     private static Date calcExpiryDate() {
         Calendar cal = Calendar.getInstance();
         int randomMonths = (int)(Math.random() * 12) - 4;
+        int randomDays = (int)(Math.random() * 31);
+        cal.set(Calendar.DAY_OF_MONTH, randomDays + 1);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0); 
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
         cal.add(Calendar.MONTH, randomMonths);
         return cal.getTime();
     }
