@@ -189,7 +189,38 @@ public class MedicationSystem {
 
 // EDIT DOCTOR
     private void editDoctor() {
-
+        System.out.println("Enter Doctor ID to edit:");
+        int idToEdit = scanner.nextInt();
+        scanner.nextLine();
+    
+        Doctor doctorToEdit = doctors.stream()
+            .filter(d -> d.getId() == idToEdit)
+            .findFirst()
+            .orElse(null);
+    
+        if (doctorToEdit == null) {
+            System.out.println("Doctor not found.");
+            return;
+        }
+    
+        System.out.println("Current Doctor Info:");
+        System.out.println(doctorToEdit);
+        
+        System.out.println("\nEnter new Doctor Name (or press enter to keep current):");
+        String newName = scanner.nextLine();
+        if (!newName.isEmpty()) {
+            doctorToEdit.setName(newName);
+        }
+    
+        System.out.println("Enter new Specialization (or press enter to keep current):");
+        String newSpecialization = scanner.nextLine();
+        if (!newSpecialization.isEmpty()) {
+            doctorToEdit.setSpecialization(newSpecialization);
+        }
+    
+        System.out.println("Doctor information updated successfully.");
+        System.out.println("Updated Information:");
+        System.out.println(doctorToEdit);
     }
 
 
@@ -307,7 +338,38 @@ public class MedicationSystem {
 
 // EDIT PATIENT
     private void editPatient() {
+        System.out.println("Enter Patient ID to edit:");
+        int idToEdit = scanner.nextInt();
+        scanner.nextLine();
 
+        Patient patientToEdit = patients.stream()
+            .filter(p -> p.getId() == idToEdit)
+            .findFirst()
+            .orElse(null);
+
+        if (patientToEdit == null) {
+            System.out.println("Patient not found.");
+            return;
+        }
+
+        System.out.println("Current Patient Information:");
+        System.out.println(patientToEdit);
+        
+        System.out.println("\nEnter new Patient First Name (or press enter to keep current):");
+        String newFirstName = scanner.nextLine();
+        if (!newFirstName.isEmpty()) {
+            patientToEdit.setFirstName(newFirstName);
+        }
+
+        System.out.println("Enter new Patient Last Name (or press enter to keep current):");
+        String newLastName = scanner.nextLine();
+        if (!newLastName.isEmpty()) {
+            patientToEdit.setLastName(newLastName);
+        }
+
+        System.out.println("Patient information updated successfully.");
+        System.out.println("Updated Information:");
+        System.out.println(patientToEdit);
     }
 
 
@@ -366,7 +428,38 @@ public class MedicationSystem {
 
 // EDIT MEDICATION
     private void editMedication() {
+        System.out.println("Enter Medication ID to edit:");
+        int idToEdit = scanner.nextInt();
+        scanner.nextLine();
 
+        Medication medicationToEdit = medications.stream()
+            .filter(m -> m.getId() == idToEdit)
+            .findFirst()
+            .orElse(null);
+
+        if (medicationToEdit == null) {
+            System.out.println("Medication not found.");
+            return;
+        }
+
+        System.out.println("Current Medication Information:");
+        System.out.println(medicationToEdit);
+        
+        System.out.println("\nEnter new Medication Name (or press enter to keep current):");
+        String newName = scanner.nextLine();
+        if (!newName.isEmpty()) {
+            medicationToEdit.setName(newName);
+        }
+
+        System.out.println("Enter new Medication Dose (or press enter to keep current):");
+        String newDose = scanner.nextLine();
+        if (!newDose.isEmpty()) {
+            medicationToEdit.setDose(newDose);
+        }
+
+        System.out.println("Medication information updated successfully.");
+        System.out.println("Updated Information:");
+        System.out.println(medicationToEdit);
     }
 
 
