@@ -161,19 +161,19 @@ public class MedicationSystem {
 
 
 // ADD DOCTOR
-    private void addDoctor() {
-        System.out.println("Enter Doctor ID:");
-        int id = scanner.nextInt();
-        scanner.nextLine(); 
-        System.out.println("Enter Doctor Name:");
-        String name = scanner.nextLine();
-        System.out.println("Enter Doctor Specialization:");
-        String specialization = scanner.nextLine();
+private void addDoctor() {
+    System.out.println("Enter Doctor ID:");
+    int id = scanner.nextInt();
+    scanner.nextLine(); 
+    System.out.println("Enter Doctor Name:");
+    String name = scanner.nextLine();
+    System.out.println("Enter Doctor Specialization:");
+    String specialization = scanner.nextLine();
 
-        Doctor newDoctor = new Doctor(id, name, specialization);
-        doctors.add(newDoctor);
-        System.out.println("Doctor added successfully.");
-    }
+    Doctor newDoctor = new Doctor(id, name, specialization);
+    doctors.add(newDoctor);
+    System.out.println("Doctor added successfully.");
+}
 
 
 // REMOVE DOCTOR
@@ -310,19 +310,19 @@ public class MedicationSystem {
 
 
 // ADD PATIENT
-    private void addPatient() {
-        System.out.println("Enter Patient ID:");
-        int id = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Enter Patient Name:");
-        String name = scanner.nextLine();
-        System.out.println("Enter Patient DOB:");
-        String dob = scanner.nextLine();
+private void addPatient() {
+    System.out.println("Enter Patient ID:");
+    int id = scanner.nextInt();
+    scanner.nextLine();
+    System.out.println("Enter Patient First Name:");
+    String firstName = scanner.nextLine();
+    System.out.println("Enter Patient Last Name:");
+    String lastName = scanner.nextLine();
 
-        Patient newPatient = new Patient(id, name, dob);
-        patients.add(newPatient);
-        System.out.println("Patient added successfully.");
-    }
+    Patient newPatient = new Patient(id, firstName, lastName);
+    patients.add(newPatient);
+    System.out.println("Patient added successfully.");
+}
 
 
 // REMOVE PATIENT
