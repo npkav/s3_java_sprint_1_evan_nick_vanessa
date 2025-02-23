@@ -15,7 +15,7 @@ public class Prescription {
     private String medication;
     private Date expiryDate;
 
-    public Prescription(int id, String doctor, String patient, String medication) { // was noticing an issue with (int, string, string, int, date) in medication, so i just removed expiryDate from this just in case it causes issues
+    public Prescription(int id, String doctor, String patient, String medication, Date expiryDate) {
         this.id = id;
         this.doctor = doctor;
         this.patient = patient;

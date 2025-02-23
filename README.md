@@ -22,13 +22,8 @@ our plaintext changelog and version history.
 
 # Version History/Changelog
 
-### 0.0.6:
-    - Added Menu System to the program.
-    - Added skeleton classes for Medication System functionality.
-    - Added Main method to start the program.
-
 ### 0.0.5:
-    - Added ability to add and remove patients from doctor's patient list.
+    - Added ability to add and remove patients from doctor's patient list
 
 ### 0.0.4:
     - Code formatting normalized across all files.
