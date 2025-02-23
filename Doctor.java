@@ -41,10 +41,14 @@ public class Doctor {
     // add a patient to the doctor's list of patients
     public void addPatient(Patient patient) {patients.add(patient);}
 
+    // add a prescription to the doctor's list of prescriptions
+    public void addPrescription(Prescription prescription) {prescriptions.add(prescription);}
+
     // remove a patient from the doctor's list of patients
     public void removePatient(Patient patient) {patients.remove(patient);}
 
-    public void addPrescription(Prescription prescription) {prescriptions.add(prescription);}
+    // remove a prescription from the doctor's list of prescriptions
+    public void removePrescription(Prescription prescription) {prescriptions.remove(prescription);}
 
     // toString method
     public String toString() {

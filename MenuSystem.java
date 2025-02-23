@@ -23,7 +23,7 @@ public class MenuSystem {
         System.out.println("2. Modify Doctor");
         System.out.println("3. Modify Patient");
         System.out.println("4. Modify Medication");
-        System.out.println("5. Create Prescription");
+        System.out.println("5. Modify Prescription");
         System.out.println("6. Print All Prescriptions by a Specific Doctor");
         System.out.println("7. Restock Medications");
         System.out.println("8. Check for Expired Medications");
@@ -81,6 +81,15 @@ public class MenuSystem {
         System.out.println("2. Remove Medication");
         System.out.println("3. Edit Medication");
         
+        System.out.print("Please enter your choice: ");
+        return scanner.nextInt();
+    }
+
+    public int showPrescriptionMenu() {
+        System.out.println("Prescription Menu");
+        System.out.println("1. Add Prescription");
+        System.out.println("2. Remove Prescription");
+
         System.out.print("Please enter your choice: ");
         return scanner.nextInt();
     }
