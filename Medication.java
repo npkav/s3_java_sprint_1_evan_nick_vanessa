@@ -6,7 +6,6 @@
 // · ExpiryDate: The expiry date of the medication ( try and set the date to be a random date inclusive of the past)
 
 import java.util.Date;
-import java.util.Calendar;
 
 // default constructor
 public class Medication {
@@ -16,27 +15,13 @@ public class Medication {
     private int inStock;
     private Date expiryDate;
 
-    // calculate random expiry date between 4 months ago and 8 months from now
-    private static Date calcExpiryDate() {
-        Calendar cal = Calendar.getInstance();
-        int randomMonths = (int)(Math.random() * 12) - 4;
-        int randomDays = (int)(Math.random() * 31);
-        cal.set(Calendar.DAY_OF_MONTH, randomDays + 1);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0); 
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        cal.add(Calendar.MONTH, randomMonths);
-        return cal.getTime();
-    }
-
     // constructor
-    public Medication(int id, String name, String dose, int inStock) {
+    public Medication(int id, String name, String dose, int inStock, Date expiryDate) {
         this.id = id;
         this.name = name;
         this.dose = dose;
         this.inStock = inStock;
-        this.expiryDate = calcExpiryDate();
+        this.expiryDate = expiryDate;
     }
 
     // getters
