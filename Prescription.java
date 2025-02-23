@@ -43,10 +43,10 @@ public class Prescription {
 
     // converting everything into a toString format
     public String toString() {
-        return "Medication ID: " + id +
-               ", Doctor: " + doctor +
-               ", Patient: " + patient +
-               ", Medication: " + medication +
-               ", Expiry Date: " + expiryDate;
+        return "Prescription ID: " + id + "\n" +
+               "Doctor: " + doctor.getName() + "\n" +
+               "Patient: " + patient.getName() + "\n" +
+               "Medication: " + medication.getName() + "\n" +
+               "Expiry Date: " + expiryDate + "\n";
     }
 }

@@ -50,18 +50,21 @@ public class MedicationSystem {
                     modifyMedication();
                     break;
                 case 5:
-                    printPrescriptions();
+                    modifyPrescriptions();
                     break;
                 case 6:
-                    restockMedications();
+                    printPrescriptions();
                     break;
                 case 7:
-                    checkExpiredMedications();
+                    restockMedications();
                     break;
                 case 8:
-                    generateReport();
+                    checkExpiredMedications();
                     break;
                 case 9:
+                    generateReport();
+                    break;
+                case 0:
                     System.out.println("Exiting the program...");
                     menus.close();
                     return;
@@ -194,6 +197,15 @@ private void addDoctor() {
         System.out.println("Enter Doctor ID to remove:");
         int idToRemove = scanner.nextInt();
         scanner.nextLine(); 
+
+        for (Prescription prescription : new ArrayList<>(prescriptions)) {
+            if (prescription.getDoctor().getId() == idToRemove) {
+                prescription.getPatient().removePrescription(prescription);
+                prescription.getPatient().removeMedication(prescription.getMedication());
+                prescription.getMedication().removePrescription(prescription);
+                prescriptions.remove(prescription);
+            }
+        }
 
         doctors.removeIf(doctor -> doctor.getId() == idToRemove);
         System.out.println("Doctor removed successfully.");
@@ -344,6 +356,15 @@ private void addPatient() {
         int idToRemove = scanner.nextInt();
         scanner.nextLine();
 
+        for (Prescription prescription : new ArrayList<>(prescriptions)) {
+            if (prescription.getPatient().getId() == idToRemove) {
+                prescription.getDoctor().removePrescription(prescription);
+                prescription.getPatient().removeMedication(prescription.getMedication());
+                prescription.getMedication().removePrescription(prescription);
+                prescriptions.remove(prescription);
+            }
+        }
+
         patients.removeIf(patient -> patient.getId() == idToRemove);
         System.out.println("Patient removed successfully.");
     }
@@ -434,6 +455,15 @@ private void addPatient() {
         int idToRemove = scanner.nextInt();
         scanner.nextLine();
 
+        for (Prescription prescription : new ArrayList<>(prescriptions)) {
+            if (prescription.getMedication().getId() == idToRemove) {
+                prescription.getDoctor().removePrescription(prescription);
+                prescription.getPatient().removePrescription(prescription);
+                prescription.getPatient().removeMedication(prescription.getMedication());
+                prescriptions.remove(prescription);
+            }
+        }
+
         medications.removeIf(medication -> medication.getId() == idToRemove);
         System.out.println("Medication removed!");
     }
@@ -476,8 +506,20 @@ private void addPatient() {
     }
 
 
-// PRINT PRESCRIPTIONS
-    private void printPrescriptions() {
+    private void modifyPrescriptions() {
+        int choice = menus.showPrescriptionMenu();
+        switch (choice) {
+            case 1:
+                addPrescription();
+                break;
+            case 2:
+                removePrescription();
+                break;
+        }
+    }
+
+// ADD PRESCRIPTIONS
+    private void addPrescription() {
         System.out.println("Please enter prescription ID: ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -550,8 +592,50 @@ private void addPatient() {
         Prescription prescription = new Prescription(id, selectDoctor, selectPatient, selectMedication);
 
         prescriptions.add(prescription);
+        selectDoctor.addPrescription(prescription);
+        selectPatient.addPrescription(prescription);
+        selectPatient.addMedication(selectMedication);
         System.out.println("Prescription successfully created!");
         System.out.println("Id: " + id + ", Doctor Name: " + selectDoctor.getName() + ", Patient Name: " + selectPatient.getName()  + ", Medication Name: " + selectMedication.getName()  + ", Expiry Date: " + prescription.getExpiryDate());
+    }
+
+// REMOVE PRESCRIPTION
+    private void removePrescription() {
+        System.out.println("Enter Prescription ID to remove:");
+        int idToRemove = scanner.nextInt();
+        scanner.nextLine(); 
+
+        prescriptions.removeIf(prescription -> prescription.getId() == idToRemove);
+        System.out.println("Prescription removed successfully.");
+}
+
+// PRINT PRESCRIPTION FROM SPECIFIED DOCTOR
+    private void printPrescriptions() {
+        System.out.println("Please enter one of the following doctor IDs: ");
+        for (Doctor doctor : doctors) {
+            System.out.println(doctor.getId() + ": " + doctor.getName());
+        }
+        String search = scanner.nextLine().toLowerCase();
+    
+        boolean found = false;
+        for (Doctor doctor : doctors) {
+            if (search.isEmpty() || 
+                doctor.getName().toLowerCase().contains(search) ||
+                String.valueOf(doctor.getId()).equals(search)) {
+                    
+                System.out.println("Prescriptions issued by " + doctor.getName() + ":");
+                for (Prescription prescription : prescriptions) {
+                    if (prescription.getDoctor().getId() == doctor.getId()) {
+                        System.out.println(prescription);
+                        found = true;
+                    }
+                }
+            }
+        }
+        
+        if (!found && !search.isEmpty()) {
+            System.out.println("ERROR: Doctor not found or no prescriptions found.");
+        }
     }
 
 

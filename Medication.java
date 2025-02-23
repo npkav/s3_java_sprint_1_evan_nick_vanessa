@@ -6,6 +6,8 @@
 // · ExpiryDate: The expiry date of the medication ( try and set the date to be a random date inclusive of the past)
 
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 // default constructor
@@ -15,6 +17,7 @@ public class Medication {
     private String dose;
     private int inStock;
     private Date expiryDate;
+    private List<Prescription> prescriptions;
 
     // calculate random expiry date between 4 months ago and 8 months from now
     private static Date calcExpiryDate() {
@@ -37,6 +40,7 @@ public class Medication {
         this.dose = dose;
         this.inStock = inStock;
         this.expiryDate = calcExpiryDate();
+        this.prescriptions = new ArrayList<Prescription>();
     }
 
     // getters
@@ -52,6 +56,12 @@ public class Medication {
     public void setDose(String dose) {this.dose = dose;}
     public void setInStock(int inStock) {this.inStock = inStock;}
     public void setExpiryDate(Date expiryDate) {this.expiryDate = expiryDate;}
+
+    // add a prescription to the medication's list of prescriptions
+    public void addPrescription(Prescription prescription) {prescriptions.add(prescription);}
+
+    // remove a prescription from the medication's list of prescriptions
+    public void removePrescription(Prescription prescription) {prescriptions.remove(prescription);}
 
     // toString method
     public String toString() {
