@@ -406,7 +406,7 @@ private void addPatient() {
 // ADD MEDICATION
     private void addMedication() {
         System.out.println("Please enter medication ID: ");
-        int id = scanner.nextInt();
+        int medicationId = scanner.nextInt();
         scanner.nextLine();
 
         System.out.println("Please enter medication name: ");
@@ -421,7 +421,7 @@ private void addPatient() {
 
         System.out.println("Getting expiry date...");
 
-        Medication medication = new Medication(id, name, dose, inStock);
+        Medication medication = new Medication(medicationId, name, dose, inStock);
 
         medications.add(medication);
         System.out.println(name + " added to list! Expiry Date: " + medication.getExpiryDate());
