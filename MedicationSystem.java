@@ -53,15 +53,18 @@ public class MedicationSystem {
                     printPrescriptions();
                     break;
                 case 6:
-                    restockMedications();
+                    searchDocPrescription();
                     break;
                 case 7:
-                    checkExpiredMedications();
+                    restockMedications();
                     break;
                 case 8:
-                    generateReport();
+                    checkExpiredMedications();
                     break;
                 case 9:
+                    generateReport();
+                    break;
+                case 0:
                     System.out.println("Exiting the program...");
                     menus.close();
                     return;
@@ -550,8 +553,42 @@ private void addPatient() {
         Prescription prescription = new Prescription(id, selectDoctor, selectPatient, selectMedication);
 
         prescriptions.add(prescription);
+        selectDoctor.addPrescription(prescription);
+        selectPatient.addPrescription(prescription);
+        selectPatient.addMedication(selectMedication);
         System.out.println("Prescription successfully created!");
         System.out.println("Id: " + id + ", Doctor Name: " + selectDoctor.getName() + ", Patient Name: " + selectPatient.getName()  + ", Medication Name: " + selectMedication.getName()  + ", Expiry Date: " + prescription.getExpiryDate());
+    }
+
+// PRINT PRESCRIPTION FROM SPECIFIED DOCTOR
+    private void searchDocPrescription() {
+        System.out.println("Please enter one of the following doctor IDs: ");
+        for (Doctor doctor : doctors) {
+            System.out.println(doctor.getId() + ": " + doctor.getName());
+        }
+
+        int doctorId = scanner.nextInt();
+        scanner.nextLine();
+
+        Doctor selectDoctor = null;
+        for (Doctor doctor : doctors) {
+            if (doctor.getId() == doctorId) {
+                selectDoctor = doctor;
+                break;
+            }
+        }
+    
+        if (selectDoctor == null) {
+            System.out.println("ERROR! Doctor not found.");
+            return;
+        }
+
+        System.out.println("Prescriptions issued by " + selectDoctor.getName() + ":");
+        for (Prescription prescription : prescriptions) {
+            if (prescription.getDoctor().getId() == doctorId) {
+                System.out.println(prescription);
+            }
+        }
     }
 
 

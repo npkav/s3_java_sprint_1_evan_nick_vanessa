@@ -23,11 +23,12 @@ public class MenuSystem {
         System.out.println("2. Modify Doctor");
         System.out.println("3. Modify Patient");
         System.out.println("4. Modify Medication");
-        System.out.println("5. Print All Prescriptions by a Specific Doctor");
-        System.out.println("6. Restock Medications");
-        System.out.println("7. Check for Expired Medications");
-        System.out.println("8. Generate Report");
-        System.out.println("9. Exit");
+        System.out.println("5. Create Prescription");
+        System.out.println("6. Print All Prescriptions by a Specific Doctor");
+        System.out.println("7. Restock Medications");
+        System.out.println("8. Check for Expired Medications");
+        System.out.println("9. Generate Report");
+        System.out.println("0. Exit");
 
         System.out.print("Please enter your choice: ");
         return scanner.nextInt();
