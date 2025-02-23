@@ -10,12 +10,12 @@ import java.util.Calendar;
 
 public class Prescription {
     private int id;
-    private String doctor;
-    private String patient;
-    private String medication;
+    private Doctor doctor;
+    private Patient patient;
+    private Medication medication;
     private Date expiryDate;
 
-    public Prescription(int id, String doctor, String patient, String medication) { // was noticing an issue with (int, string, string, int, date) in medication, so i just removed expiryDate from this just in case it causes issues
+    public Prescription(int id, Doctor doctor, Patient patient, Medication medication) {
         this.id = id;
         this.doctor = doctor;
         this.patient = patient;
@@ -29,16 +29,16 @@ public class Prescription {
 
     // the getters
     public int getId() {return id;}
-    public String getDoctor() {return doctor;}
-    public String getPatient() {return patient;}
-    public String getMedication() {return medication;}
+    public Doctor getDoctor() {return doctor;}
+    public Patient getPatient() {return patient;}
+    public Medication getMedication() {return medication;}
     public Date getExpiryDate() {return expiryDate;}
 
     // the setters
     public void setId(int id) {this.id = id;}
-    public void setDoctor(String doctor) {this.doctor = doctor;}
-    public void setPatient(String patient) {this.patient = patient;}
-    public void setMedication(String medication) {this.medication = medication;}
+    public void setDoctor(Doctor doctor) {this.doctor = doctor;}
+    public void setPatient(Patient patient) {this.patient = patient;}
+    public void setMedication(Medication medication) {this.medication = medication;}
     public void setExpiry(Date expiryDate) {this.expiryDate = expiryDate;}
 
     // converting everything into a toString format
