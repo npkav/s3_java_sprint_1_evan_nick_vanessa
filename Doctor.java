@@ -19,17 +19,17 @@ public class Doctor {
     }
 
     // getters
-    public int getDoctorId() {return id;}
-    public String getDoctorName() {return name;}
-    public String getDoctorSpecialization() {return specialization;}
-    public Patient[] getDoctorPatients() {return patients.toArray(new Patient[patients.size()]);}
+    public int getId() {return id;}
+    public String getName() {return name;}
+    public String getSpecialization() {return specialization;}
+    public Patient[] getPatients() {return patients.toArray(new Patient[patients.size()]);}
 
     // setters
-    public void setDoctorId(int id) {this.id = id;}
-    public void setDoctorName(String name) {this.name = name;}
-    public void setDoctorSpecialization(String specialization) {this.specialization = specialization;}
+    public void setId(int id) {this.id = id;}
+    public void setName(String name) {this.name = name;}
+    public void setSpecialization(String specialization) {this.specialization = specialization;}
 
-    public void setDoctorPatients(Patient[] patients) {
+    public void setPatients(Patient[] patients) {
         this.patients = new ArrayList<Patient>();
         for (Patient patient : patients) {
             this.patients.add(patient);
@@ -37,19 +37,15 @@ public class Doctor {
     }
 
     // add a patient to the doctor's list of patients
-    public void addDoctorPatient(Patient patient) {
-        patients.add(patient);
-    }
+    public void addPatient(Patient patient) {patients.add(patient);}
 
     // remove a patient from the doctor's list of patients
-    public void removeDoctorPatient(Patient patient) {
-        patients.remove(patient);
-    }
+    public void removePatient(Patient patient) {patients.remove(patient);}
 
     // toString method
     public String toString() {
         return "Doctor ID: " + id +
-               "\nDoctor Name: " + name +
-               "\nSpecialization: " + specialization;
+               ", Doctor Name: " + name +
+               ", Specialization: " + specialization;
     }
 }
