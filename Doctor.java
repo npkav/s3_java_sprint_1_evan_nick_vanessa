@@ -9,6 +9,7 @@ public class Doctor {
     private String name;
     private String specialization;
     private List<Patient> patients;
+    private List<Prescription> prescriptions;
 
     // default constructor
     public Doctor(int id, String name, String specialization) {
@@ -16,6 +17,7 @@ public class Doctor {
         this.name = name;
         this.specialization = specialization;
         this.patients = new ArrayList<Patient>();
+        this.prescriptions = new ArrayList<Prescription>();
     }
 
     // getters
@@ -39,8 +41,14 @@ public class Doctor {
     // add a patient to the doctor's list of patients
     public void addPatient(Patient patient) {patients.add(patient);}
 
+    // add a prescription to the doctor's list of prescriptions
+    public void addPrescription(Prescription prescription) {prescriptions.add(prescription);}
+
     // remove a patient from the doctor's list of patients
     public void removePatient(Patient patient) {patients.remove(patient);}
+
+    // remove a prescription from the doctor's list of prescriptions
+    public void removePrescription(Prescription prescription) {prescriptions.remove(prescription);}
 
     // toString method
     public String toString() {
