@@ -1,7 +1,0 @@
-The project should have a document that outlines all the following sections
-
-1. User Documentation This includes a document stating what the application is about, explanation of all the classes and their working, and how to start it/access it. Also include the class diagram with the associations between them.
-
-2. Development Documentation This includes at least the Javadocs, a description of the source code directory structure, the build process (i.e., how to compile the project), compiler time dependencies, development standards, how a database would look in theory for this project (It Does Not Have to Be Actually Setup!). Include the entity relationships with your database design, and how to get the source code from the GitHub repository.
-
-3. Deployment Documentation This is basically the installation manual of the application, describing any steps needed to make it run.
