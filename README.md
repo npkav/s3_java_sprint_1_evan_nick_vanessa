@@ -22,6 +22,34 @@ our plaintext changelog and version history.
 
 # Version History/Changelog
 
+### 1.0.0 (Final Release):
+    - Added prescription removal feature
+    - Improved prescription printing formatting
+    - Implemented Create Prescription functionality
+    - Added Print All Prescriptions from Specific Doctor feature
+    - Fixed medication ID naming consistency
+
+### 0.0.9:
+    - Implemented proper prescription creation with doctor, patient, and medication selection
+    - Added randomized medication expiry date generation
+    - Created specific menus for different system options
+    - Added edit functionality for doctors, patients, and medications
+    - Fixed patient management system (simplified patient creation)
+
+### 0.0.8:
+    - Added search functionality for drugs, doctors, and patients
+    - Implemented report generation system
+    - Added medication management features (add, remove, restock, check expiry)
+    - Improved search function to handle incomplete keyword searches
+    - Added expiration date calculation system
+
+### 0.0.7:
+    - Enhanced doctor-patient relationship management
+    - Added core medication system functionality
+    - Implemented initial menu system integration
+    - Added basic system operation features
+    - Code cleanup and bug fixes
+
 ### 0.0.6:
     - Added Menu System to the program.
     - Added skeleton classes for Medication System functionality.
