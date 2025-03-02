@@ -18,7 +18,14 @@ public class MenuSystem {
     }
 
     public int showMainMenu() {
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("--------------------------------");
         System.out.println("Medication System");
+        System.out.println("--------------------------------");
         System.out.println("1. Search for Drugs, Patients, and Doctors");
         System.out.println("2. Modify Doctor");
         System.out.println("3. Modify Patient");
@@ -35,6 +42,11 @@ public class MenuSystem {
     }
 
     public int showSearchMenu() {
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println("Search for Drugs, Patients, and Doctors");
         System.out.println("1. Search for Drugs");
         System.out.println("2. Search for Patients");
@@ -45,6 +57,11 @@ public class MenuSystem {
     }
 
     public int showDoctorMenu() {
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println("Doctor Menu");
         System.out.println("1. Add Doctor");
         System.out.println("2. Remove Doctor");
@@ -57,6 +74,11 @@ public class MenuSystem {
     }
 
     public int showAddRemovePatientMenu() {
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println("Add/Remove Patient from Doctor");
         System.out.println("1. Add Patient to Doctor");
         System.out.println("2. Remove Patient from Doctor");
@@ -66,6 +88,11 @@ public class MenuSystem {
     }
     
     public int showPatientMenu() {
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println("Patient Menu");
         System.out.println("1. Add Patient");
         System.out.println("2. Remove Patient");
@@ -76,6 +103,11 @@ public class MenuSystem {
     }
 
     public int showMedicationMenu() {
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println("Medication Menu");
         System.out.println("1. Add Medication");
         System.out.println("2. Remove Medication");
@@ -86,6 +118,11 @@ public class MenuSystem {
     }
 
     public int showPrescriptionMenu() {
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println("Prescription Menu");
         System.out.println("1. Add Prescription");
         System.out.println("2. Remove Prescription");
